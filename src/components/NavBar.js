@@ -3,24 +3,20 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-const NavBar = (props) => {
+const NavBar = () => {
 
   const style = {
-    // background: 'transparent',
-    // boxShadow: 'none',
     fontFamily: 'Roboto',
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    paddingRight: '0',
-    width: '100%',
-    boxSizing: 'border-box',
+    backgroundColor: 'rgba(255,255,255,1)',
+    boxShadow: 'none'
   };
 
   return (
     <Fragment>
       <AppBar style={style} position="fixed">
         <Toolbar>
-          <Typography variant="title" style={{color: 'white'}}>
-            {props.name}
+          <Typography variant="title" style={{color: 'black'}}>
+            Merchandise
           </Typography>
         </Toolbar>
       </AppBar>
