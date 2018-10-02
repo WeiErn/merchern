@@ -118,7 +118,7 @@ class Filter extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    // const { classes } = this.props;
     const { anchorEl, open } = this.state;
     const id = open ? 'simple-popper' : null;
 

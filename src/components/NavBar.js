@@ -1,27 +1,36 @@
-import React, { Fragment } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles'
+import { Typography, AppBar, Toolbar } from '@material-ui/core'
 
-const NavBar = () => {
-
-  const style = {
+const styles = theme => ({
+  root: {
+    padding: theme.spacing.unit,
     fontFamily: 'Roboto',
     backgroundColor: 'rgba(255,255,255,1)',
-    boxShadow: 'none'
-  };
+    // position: 'static'
+  }
+});
+
+const NavBar = (props) => {
+
+  let fixed = false;
+
+  const { classes, position } = props;
 
   return (
-    <Fragment>
-      <AppBar style={style} position="fixed">
-        <Toolbar>
-          <Typography variant="title" style={{color: 'black'}}>
-            Merchandise
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </Fragment>
+    <AppBar color="default" className={classes.root} position={position ? 'fixed' : 'static'}>
+      <Toolbar>
+        <Typography variant="headline">
+          Merchandise
+        </Typography>
+      </Toolbar>
+    </AppBar>
   )
 };
 
-export default NavBar;
+NavBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(NavBar);

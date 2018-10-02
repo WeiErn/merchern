@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -22,7 +22,7 @@ class ProductList extends React.Component {
 
     return (
       <Grid container className={classes.products} justify="center" spacing={Number(spacing)}>
-        {[0, 1, 2].map(value => (
+        {[0, 1, 2, 3, 4, 5, 6, 7].map(value => (
           <Grid key={value} item>
             <Product/>
           </Grid>
