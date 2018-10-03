@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Filter from './Filter'
-import ProductList from './ProductList'
+import Filter from '../Filter'
+import ProductList from '../products/ProductList'
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles'
 
@@ -23,7 +23,7 @@ const styles = theme => ({
 
 });
 
-const Content = (props) => {
+const Dashboard = (props) => {
 
   const { classes } = props;
   return (
@@ -34,8 +34,8 @@ const Content = (props) => {
   )
 };
 
-Content.propTypes = {
+Dashboard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Content);
+export default withStyles(styles)(Dashboard);
