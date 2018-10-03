@@ -1,5 +1,4 @@
-import React from 'react';
-import { Grid } from '@material-ui/core';
+import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles'
 import CardMedia from "@material-ui/core/CardMedia/CardMedia";
 import classnames from 'classnames';
@@ -23,6 +22,8 @@ const styles = theme => ({
     transformOrigin: 'top left',
     position: 'relative',
     marginRight: '5px',
+    boxSizing: 'border-box',
+    border: '2px solid transparent'
   },
   arrows: {
     cursor: 'pointer',
@@ -48,29 +49,77 @@ const styles = theme => ({
     height: '100%',
     width: '80%',
     boxSizing: 'border-box'
+  },
+  selected: {
+    border: '2px solid rgb(128, 130, 132)',
+  },
+  hovered: {
+    border: '2px solid rgb(170, 173, 175)'
   }
 });
 
-const ProductImagesCarousel = (props) => {
-  const { classes } = props;
+class ProductImagesCarousel extends Component {
 
-  const imageList = [
-    '/images/ctci-front.jpg',
-    '/images/ctci-back.jpg'
-  ];
+  state = {
+    selectedId: '1',
+    hoveredId: null
+  };
 
-  const imageRow = imageList.map(image => {
+  handleClick = e => {
+    this.setState({
+      selectedId: e.target.id
+    });
+  };
+
+  handleMouseEnter = e => {
+    this.setState({
+      hoveredId: e.target.id
+    });
+  };
+
+  handleMouseLeave = () => {
+    this.setState({
+      hoveredId: null
+    })
+  };
+
+  render = () => {
+    const {classes} = this.props;
+
+    const imageList = [
+      {id: '1', url: '/images/ctci-front.jpg'},
+      {id: '2', url: '/images/ctci-back.jpg'}
+    ];
+
+    const imageRow = imageList.map(image => {
+      return (
+        <img
+          key={image.id}
+          id={image.id}
+          src={image.url}
+          onClick={this.handleClick}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+          className={classnames(classes.style, {
+            [classes.selected]: (this.state.selectedId === image.id),
+            [classes.hovered]: (this.state.hoveredId === image.id)
+          })} />
+      )
+    });
+
+    const selectedImage = imageList.filter(imageObj => {
+      return imageObj.id === this.state.selectedId
+    });
+
+    const selectedImageUrl = selectedImage[0]['url'];
+
+
     return (
-      <img src={image} className={classes.style}/>
-    )
-  });
-
-  return (
-    <div>
+      <div>
         <CardMedia
           className={classes.media}
           // image={product.images[0]}
-          image='/images/ctci-front.jpg'
+          image={selectedImageUrl}
           // title={product.product}
           title='ctci'
         />
@@ -80,10 +129,11 @@ const ProductImagesCarousel = (props) => {
           <div className={classes.images}>
             {imageRow}
           </div>
-          <a className={classnames(classes.arrows, classes.next)} >&#10095;</a>
+          <a className={classnames(classes.arrows, classes.next)}>&#10095;</a>
         </div>
-    </div>
-  )
+      </div>
+    )
+  }
 };
 
 export default withStyles(styles)(ProductImagesCarousel)

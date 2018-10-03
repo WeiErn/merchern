@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles'
 import ProductImagesCarousel from './ProductImagesCarousel';
 import LocalOfferTwoToneIcon from '@material-ui/icons/LocalOfferTwoTone';
