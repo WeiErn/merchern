@@ -14,12 +14,10 @@ const styles = theme => ({
 
 const NavBar = (props) => {
 
-  let fixed = false;
-
-  const { classes, position } = props;
+  const { classes } = props;
 
   return (
-    <AppBar color="default" className={classes.root} position={position ? 'fixed' : 'static'}>
+    <AppBar color="default" className={classes.root}>
       <Toolbar>
         <Typography variant="headline">
           Merchandise
