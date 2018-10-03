@@ -17,7 +17,7 @@ const NavBar = (props) => {
   const { classes } = props;
 
   return (
-    <AppBar color="default" className={classes.root}>
+    <AppBar color="default" className={classes.root} position="fixed">
       <Toolbar>
         <Typography variant="headline">
           Merchandise

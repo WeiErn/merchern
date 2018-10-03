@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Filter from '../Filter'
+import Filter from './Filter'
 import ProductList from '../products/ProductList'
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles'
@@ -28,7 +28,7 @@ const Dashboard = (props) => {
   const { classes } = props;
   return (
     <Grid container className={classes.overall}>
-      <Filter/>
+      {/*<Filter/>*/}
       <ProductList/>
     </Grid>
   )

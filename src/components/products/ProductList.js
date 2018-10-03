@@ -22,7 +22,55 @@ class ProductList extends React.Component {
         images: [
           '/images/ctci-front.jpg'
         ]
-      }
+      },{
+        id: 1,
+        product: 'Cracking the Coding Interview',
+        price: '$50',
+        desc: 'A must have for coding interview preparation.',
+        images: [
+          '/images/ctci-front.jpg'
+        ]
+      },{
+        id: 1,
+        product: 'Cracking the Coding Interview',
+        price: '$50',
+        desc: 'A must have for coding interview preparation.',
+        images: [
+          '/images/ctci-front.jpg'
+        ]
+      },{
+        id: 1,
+        product: 'Cracking the Coding Interview',
+        price: '$50',
+        desc: 'A must have for coding interview preparation.',
+        images: [
+          '/images/ctci-front.jpg'
+        ]
+      },{
+        id: 1,
+        product: 'Cracking the Coding Interview',
+        price: '$50',
+        desc: 'A must have for coding interview preparation.',
+        images: [
+          '/images/ctci-front.jpg'
+        ]
+      },{
+        id: 1,
+        product: 'Cracking the Coding Interview',
+        price: '$50',
+        desc: 'A must have for coding interview preparation.',
+        images: [
+          '/images/ctci-front.jpg'
+        ]
+      },{
+        id: 1,
+        product: 'Cracking the Coding Interview',
+        price: '$50',
+        desc: 'A must have for coding interview preparation.',
+        images: [
+          '/images/ctci-front.jpg'
+        ]
+      },
     ]
   };
 
@@ -34,7 +82,7 @@ class ProductList extends React.Component {
       <Grid key={product.id} item>
         <Product product={product}/>
       </Grid>
-    ))
+    ));
 
     return (
       <Grid container className={classes.products} justify="center" spacing={16}>
