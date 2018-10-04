@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles'
 import CardMedia from "@material-ui/core/CardMedia/CardMedia";
 import classnames from 'classnames';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 const styles = theme => ({
   media: {
@@ -32,8 +34,8 @@ const styles = theme => ({
     width: 'auto',
     padding: '5px',
     fontWeight: 'bold',
-    fontSize: '30px',
-    color: 'rgb(59, 59, 63)',
+    // fontSize: '30px',
+    // color: 'rgb(59, 59, 63)',
     transition: '0.6s ease',
     borderRadius: '0 3px 3px 0',
     marginTop: '-22px'
@@ -62,7 +64,24 @@ class ProductImagesCarousel extends Component {
 
   state = {
     selectedId: '1',
-    hoveredId: null
+    hoveredId: null,
+  };
+
+  goTo = (number, len) => {
+    let resultId = parseFloat(this.state.selectedId) + number;
+    let nextId;
+
+    if (resultId > len) {
+      nextId = 1
+    } else if (resultId === 0) {
+      nextId = len
+    } else {
+      nextId = resultId
+    }
+
+    this.setState({
+      selectedId: nextId.toString()
+    })
   };
 
   handleClick = e => {
@@ -84,19 +103,15 @@ class ProductImagesCarousel extends Component {
   };
 
   render = () => {
-    const {classes} = this.props;
+    const {classes, images} = this.props;
 
-    const imageList = [
-      {id: '1', url: '/images/ctci-front.jpg'},
-      {id: '2', url: '/images/ctci-back.jpg'}
-    ];
-
-    const imageRow = imageList.map(image => {
+    const imageRow = images.map(image => {
       return (
         <img
           key={image.id}
           id={image.id}
           src={image.url}
+          alt={image.alt}
           onClick={this.handleClick}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
@@ -107,29 +122,31 @@ class ProductImagesCarousel extends Component {
       )
     });
 
-    const selectedImage = imageList.filter(imageObj => {
+    const selectedImage = images.find(imageObj => {
       return imageObj.id === this.state.selectedId
     });
 
-    const selectedImageUrl = selectedImage[0]['url'];
-
+    const selectedImageUrl = selectedImage['url'];
 
     return (
       <div>
         <CardMedia
           className={classes.media}
-          // image={product.images[0]}
           image={selectedImageUrl}
-          // title={product.product}
-          title='ctci'
         />
 
         <div className={classes.carousel}>
-          <a className={classnames(classes.arrows, classes.prev)}>&#10094;</a>
+          <a className={classnames(classes.arrows, classes.prev)}
+             onClick={() => {this.goTo(-1, images.length)}}>
+            <ArrowBackIosIcon />
+          </a>
           <div className={classes.images}>
             {imageRow}
           </div>
-          <a className={classnames(classes.arrows, classes.next)}>&#10095;</a>
+          <a className={classnames(classes.arrows, classes.next)}
+             onClick={() => {this.goTo(1, images.length)}}>
+            <ArrowForwardIosIcon />
+          </a>
         </div>
       </div>
     )

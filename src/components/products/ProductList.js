@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
+import ProductCard from './ProductCard';
 
-import Product from './Product';
 
 const styles = () => ({
   products: {
@@ -12,75 +13,13 @@ const styles = () => ({
 });
 
 class ProductList extends React.Component {
-  state = {
-    products: [
-      {
-        id: 1,
-        product: 'Cracking the Coding Interview',
-        price: '$50',
-        desc: 'A must have for coding interview preparation.',
-        images: [
-          '/images/ctci-front.jpg'
-        ]
-      },{
-        id: 1,
-        product: 'Cracking the Coding Interview',
-        price: '$50',
-        desc: 'A must have for coding interview preparation.',
-        images: [
-          '/images/ctci-front.jpg'
-        ]
-      },{
-        id: 1,
-        product: 'Cracking the Coding Interview',
-        price: '$50',
-        desc: 'A must have for coding interview preparation.',
-        images: [
-          '/images/ctci-front.jpg'
-        ]
-      },{
-        id: 1,
-        product: 'Cracking the Coding Interview',
-        price: '$50',
-        desc: 'A must have for coding interview preparation.',
-        images: [
-          '/images/ctci-front.jpg'
-        ]
-      },{
-        id: 1,
-        product: 'Cracking the Coding Interview',
-        price: '$50',
-        desc: 'A must have for coding interview preparation.',
-        images: [
-          '/images/ctci-front.jpg'
-        ]
-      },{
-        id: 1,
-        product: 'Cracking the Coding Interview',
-        price: '$50',
-        desc: 'A must have for coding interview preparation.',
-        images: [
-          '/images/ctci-front.jpg'
-        ]
-      },{
-        id: 1,
-        product: 'Cracking the Coding Interview',
-        price: '$50',
-        desc: 'A must have for coding interview preparation.',
-        images: [
-          '/images/ctci-front.jpg'
-        ]
-      },
-    ]
-  };
 
   render() {
-    const { classes } = this.props;
-    const { products } = this.state;
+    const { classes, products } = this.props;
 
     const productList = products.map(product => (
       <Grid key={product.id} item>
-        <Product product={product}/>
+        <ProductCard product={product}/>
       </Grid>
     ));
 
@@ -96,4 +35,10 @@ ProductList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ProductList);
+const mapStateToProps = state => {
+  return {
+    products: state.products
+  }
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(ProductList));
