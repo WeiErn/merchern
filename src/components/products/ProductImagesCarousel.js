@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles'
+import { Grid } from '@material-ui/core';
 import CardMedia from "@material-ui/core/CardMedia/CardMedia";
 import classnames from 'classnames';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -11,21 +12,15 @@ const styles = theme => ({
     paddingTop: '100%',
     transform: 'rotate(90deg)',
   },
-  prev: {
-
-  },
   next: {
     right: 0,
     borderRadius: '3px 0 0 3px'
   },
-  style: {
-    maxHeight: 100,
-    transform: 'rotate(90deg) translate(0, -100%)',
-    transformOrigin: 'top left',
-    position: 'relative',
-    marginRight: '5px',
-    boxSizing: 'border-box',
-    border: '2px solid transparent'
+  thumbnail: {
+    border: '2px solid transparent',
+    height: 0,
+    paddingTop: '100%',
+    transform: 'rotate(90deg)'
   },
   arrows: {
     cursor: 'pointer',
@@ -34,23 +29,19 @@ const styles = theme => ({
     width: 'auto',
     padding: '5px',
     fontWeight: 'bold',
-    // fontSize: '30px',
-    // color: 'rgb(59, 59, 63)',
     transition: '0.6s ease',
     borderRadius: '0 3px 3px 0',
     marginTop: '-22px'
   },
   carousel: {
-    position: 'relative'
+    margin: '20px 0',
+    position: 'relative',
   },
   images: {
-    marginTop: 30,
-    transform: 'translate(20%, 0)',
-    left: '50%',
-    textAlign: 'center',
-    height: '100%',
-    width: '80%',
-    boxSizing: 'border-box'
+    // textAlign: 'center',
+    // boxSizing: 'border-box'
+    // left: '-50%',
+    // position: 'absolute'
   },
   selected: {
     border: '2px solid rgb(128, 130, 132)',
@@ -107,18 +98,20 @@ class ProductImagesCarousel extends Component {
 
     const imageRow = images.map(image => {
       return (
-        <img
-          key={image.id}
-          id={image.id}
-          src={image.url}
-          alt={image.alt}
-          onClick={this.handleClick}
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-          className={classnames(classes.style, {
-            [classes.selected]: (this.state.selectedId === image.id),
-            [classes.hovered]: (this.state.hoveredId === image.id)
-          })} />
+        <Grid item xs={3} style={{margin: '0 10px'}}>
+          <CardMedia
+            key={image.id}
+            id={image.id}
+            image={image.url}
+            alt={image.alt}
+            onClick={this.handleClick}
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.handleMouseLeave}
+            className={classnames(classes.thumbnail, {
+              [classes.selected]: (this.state.selectedId === image.id),
+              [classes.hovered]: (this.state.hoveredId === image.id)
+            })} />
+        </Grid>
       )
     });
 
@@ -135,19 +128,26 @@ class ProductImagesCarousel extends Component {
           image={selectedImageUrl}
         />
 
-        <div className={classes.carousel}>
-          <a className={classnames(classes.arrows, classes.prev)}
-             onClick={() => {this.goTo(-1, images.length)}}>
-            <ArrowBackIosIcon />
-          </a>
-          <div className={classes.images}>
+        <Grid container className={classes.carousel}>
+          <Grid item xs={1}>
+            <a className={classnames(classes.arrows, classes.prev)}
+               onClick={() => {this.goTo(-1, images.length)}}>
+              <ArrowBackIosIcon />
+            </a>
+          </Grid>
+          <Grid item xs={10} className={classes.images}>
+            <Grid container wrap='nowrap' justify='center'
+                  >
             {imageRow}
-          </div>
-          <a className={classnames(classes.arrows, classes.next)}
-             onClick={() => {this.goTo(1, images.length)}}>
-            <ArrowForwardIosIcon />
-          </a>
-        </div>
+            </Grid>
+          </Grid>
+          <Grid item xs={1}>
+            <a className={classnames(classes.arrows, classes.next)}
+               onClick={() => {this.goTo(1, images.length)}}>
+              <ArrowForwardIosIcon />
+            </a>
+          </Grid>
+        </Grid>
       </div>
     )
   }

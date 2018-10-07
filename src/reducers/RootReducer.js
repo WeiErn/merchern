@@ -21,7 +21,9 @@ const initState = {
       desc: 'Back up your precious, beautiful memories.',
       images: [
         {id: '1', url: '/images/wd-1.jpg', alt: 'front of wd'},
-        {id: '2', url: '/images/wd-2.jpg', alt: 'back of wd'}
+        {id: '2', url: '/images/wd-2.jpg', alt: 'back of wd'},
+        {id: '3', url: '/images/wd-2.jpg', alt: 'back of wd'},
+        {id: '4', url: '/images/wd-2.jpg', alt: 'back of wd'},
       ]
     },
     {

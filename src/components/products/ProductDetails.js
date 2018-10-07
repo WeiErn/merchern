@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Hidden } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles'
 import ProductImagesCarousel from './ProductImagesCarousel';
 import LocalOfferTwoToneIcon from '@material-ui/icons/LocalOfferTwoTone';
@@ -16,13 +16,18 @@ const styles = theme => ({
   overall: {
     position: 'absolute',
     top: '110px',
-    margin: '20px'
     // [theme.breakpoints.down('sm')]: {
     //   top: '90px'
     // },
     // [theme.breakpoints.up('md')]: {
     //   top: '90px'
     // }
+  },
+  paddingCell: {
+    padding: '0 16px',
+    minWidth: '405px',
+    maxWidth: '500px',
+    // width: 'auto'
   },
   media: {
     height: 0,
@@ -54,13 +59,12 @@ class ProductDetails extends Component {
 
   render = () => {
     const { classes, product } = this.props;
-    console.log(product)
     return (
-      <Grid container className={classes.overall} justify="center" spacing={32}>
-        <Grid item xs={4}>
+      <Grid container className={classes.overall} spacing={0} justify='center'>
+        <Grid item xs={8} sm={8} md={6} lg={5} className={classes.paddingCell}>
           <ProductImagesCarousel images={product.images}/>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={8} sm={8} md={4} className={classes.paddingCell}>
           <Typography variant="title" component="h1" className={classes.title}>
             {product.product}
           </Typography>

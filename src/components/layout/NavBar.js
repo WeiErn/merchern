@@ -18,8 +18,14 @@ const NavBar = (props) => {
 
   return (
     <AppBar color="default" className={classes.root} position="fixed">
-      <Toolbar>
-        <Typography variant="headline">
+      <Toolbar style={{
+        float: 'none',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        cursor: 'pointer',
+        textAlign: 'center'
+      }}>
+        <Typography variant="headline" align="center">
           Merchandise
         </Typography>
       </Toolbar>
