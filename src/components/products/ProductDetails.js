@@ -16,6 +16,7 @@ const styles = theme => ({
   overall: {
     position: 'absolute',
     top: '110px',
+    marginTop: '20px'
     // [theme.breakpoints.down('sm')]: {
     //   top: '90px'
     // },
