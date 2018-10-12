@@ -8,7 +8,7 @@ import ProductCard from './ProductCard';
 
 const styles = () => ({
   products: {
-    margin: 20
+    // margin: 20
   }
 });
 
