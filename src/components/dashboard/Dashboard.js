@@ -13,6 +13,7 @@ const styles = theme => ({
   overall: {
     position: 'absolute',
     top: '110px',
+    padding: '16px'
     // [theme.breakpoints.down('sm')]: {
     //   top: '90px'
     // },
@@ -27,7 +28,7 @@ const Dashboard = (props) => {
 
   const { classes } = props;
   return (
-    <Grid container className={classes.overall}>
+    <Grid container className={classes.overall} justify="center">
       {/*<Filter/>*/}
       <ProductList/>
     </Grid>

@@ -16,7 +16,7 @@ const styles = theme => ({
   overall: {
     position: 'absolute',
     top: '110px',
-    marginTop: '20px'
+    marginTop: '20px',
     // [theme.breakpoints.down('sm')]: {
     //   top: '90px'
     // },
@@ -26,7 +26,7 @@ const styles = theme => ({
   },
   paddingCell: {
     padding: '0 16px',
-    minWidth: '405px',
+    minWidth: '320px',
     maxWidth: '500px',
     // width: 'auto'
   },
@@ -38,21 +38,32 @@ const styles = theme => ({
   },
   title: {
     fontSize: 25,
-    marginBottom: '10px'
+    marginBottom: '10px',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '20px',
+      maxWidth: '320px'
+    },
   },
   subheading: {
     display: 'inline-block',
     width: '80%',
     lineHeight: 2,
-    fontSize: 20
+    fontSize: 20,
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '16px'
+    },
   },
   icon: {
     marginRight: '10px',
-    marginTop: '8px'
+    marginTop: '8px',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '4px'
+    },
   },
   info: {
     display: 'flex',
-    alignContent: 'flex-start'
+    alignContent: 'flex-start',
+    maxWidth: '320px'
   }
 });
 

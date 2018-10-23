@@ -5,7 +5,7 @@ import { Typography, AppBar, Toolbar } from '@material-ui/core'
 
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit,
+    // padding: theme.spacing.unit,
     fontFamily: 'Roboto',
     backgroundColor: 'rgba(255,255,255,1)',
     // position: 'static'

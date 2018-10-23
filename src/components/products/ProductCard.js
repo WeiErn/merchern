@@ -16,6 +16,9 @@ import { Link } from 'react-router-dom';
 const styles = theme => ({
   card: {
     width: 380,
+    [theme.breakpoints.down('xs')]: {
+      width: '280px'
+    },
   },
   title: {
     fontSize: 18,
